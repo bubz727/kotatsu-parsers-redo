@@ -193,10 +193,14 @@ internal class Toonily(context: MangaLoaderContext) :
 		val isAdult = doc.selectFirst(".adult-confirm, .manga-title-badges.adult, .manga-title-badges:contains(18+)") != null ||
 			tags.any { it.key.contains("adult", ignoreCase = true) || it.key.contains("mature", ignoreCase = true) }
 
+		val rating = (doc.selectFirst("#averagerate") ?: doc.selectFirst("[property=ratingValue]") ?: doc.selectFirst(".post-total-rating .total_votes"))
+			?.text()?.toFloatOrNull()?.div(5f) ?: manga.rating
+
 		manga.copy(
 			title = title,
 			url = href,
 			publicUrl = href.toAbsoluteUrl(domain),
+			rating = rating,
 			tags = tags,
 			description = desc,
 			altTitles = setOfNotNull(alt),
