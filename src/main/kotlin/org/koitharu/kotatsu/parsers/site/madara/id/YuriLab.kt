@@ -23,6 +23,9 @@ internal class YuriLab(context: MangaLoaderContext) :
     override val sourceLocale: Locale = Locale.ENGLISH
     override val withoutAjax = true
 
+    override val filterCapabilities: MangaListFilterCapabilities
+        get() = super.filterCapabilities.copy(isMultipleTagsSupported = false)
+
     override fun getRequestHeaders(): Headers = super.getRequestHeaders().newBuilder()
         .set("Referer", "https://$domain/")
         .build()
