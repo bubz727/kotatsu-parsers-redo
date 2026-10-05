@@ -278,18 +278,18 @@ internal class SilentQuill(context: MangaLoaderContext) :
 	}
 
 	private companion object {
-		private val NEXT_F_PUSH_REGEX = Regex("""self\.__next_f\.push\(\[\s*1\s*,\s*"(.*?)"\s*\]\)""", RegexOption.DOT_MATCHES_ALL)
-		private val SERIES_CARD_REGEX = Regex("""\"href\":\"(/series/([^\"/]+)/?)\"(.*?)(?=\"href\":\"/series/|\Z)""", RegexOption.DOT_MATCHES_ALL)
-		private val TITLE_REGEX = Regex("""\"title\":\"((?:\\.|[^\"])*)\"""")
-		private val ALT_REGEX = Regex("""\"alt\":\"((?:\\.|[^\"])*)\"""")
-		private val SRC_REGEX = Regex("""\"src\":\"((?:\\.|[^\"])*)\"""")
-		private val STATUS_REGEX = Regex("""\"children\":\"(Completed|Ongoing)\"""", RegexOption.IGNORE_CASE)
-		private val PAGES_REGEX = Regex("""\"pages\":\s*(\[\{.*?\}\])""")
-		private val PAGE_IMG_REGEX = Regex("""\"url\":\"(/img/p/[^\"]+)\"""")
+		private val NEXT_F_PUSH_REGEX = Regex("""self\.__next_f\.push\(\[\s*1\s*,\s*"(.*?)"\s*]\)""", RegexOption.DOT_MATCHES_ALL)
+		private val SERIES_CARD_REGEX = Regex(""""href":"(/series/([^"/]+)/?)"(.*?)(?="href":"/series/|\Z)""", RegexOption.DOT_MATCHES_ALL)
+		private val TITLE_REGEX = Regex(""""title":"((?:\\.|[^"])*)${'"'}""")
+		private val ALT_REGEX = Regex(""""alt":"((?:\\.|[^"])*)${'"'}""")
+		private val SRC_REGEX = Regex(""""src":"((?:\\.|[^"])*)${'"'}""")
+		private val STATUS_REGEX = Regex(""""children":"(Completed|Ongoing)${'"'}""", RegexOption.IGNORE_CASE)
+		private val PAGES_REGEX = Regex(""""pages":\s*(\[\{.*?\}])""")
+		private val PAGE_IMG_REGEX = Regex(""""url":"(/img/p/[^"]+)${'"'}""")
 		private val CHAPTER_NUMBER_REGEX = Regex("""(?:Ch\.|Chapter)\s*(\d+(?:\.\d+)?)""", RegexOption.IGNORE_CASE)
 		private val RELATIVE_DATE_REGEX = Regex("""^(\d+)\s*(s|m|h|d|w|mo|mos|y|yr|yrs|min|mins|sec|secs|hr|hrs|day|days|week|weeks|month|months|year|years)""")
 		private val AUTHOR_PREFIX_REGEX = Regex("""^(?:art\s+by|story\s+by)\s+""", RegexOption.IGNORE_CASE)
-		private val GENRE_OPTION_REGEX = Regex("""\"value\":\"([a-zA-Z0-9_\-]+)\",\"label\":\"([^\"]+)\"""")
+		private val GENRE_OPTION_REGEX = Regex(""""value":"([a-zA-Z0-9_-]+)","label":"([^"]+)${'"'}""")
 		private val TAG_COUNT_REGEX = Regex("""\s*\(\d+\)$""")
 		private val VOLUME_REGEX = Regex("""(?:Volume|Vol\.)\s*(\d+)""", RegexOption.IGNORE_CASE)
 	}
