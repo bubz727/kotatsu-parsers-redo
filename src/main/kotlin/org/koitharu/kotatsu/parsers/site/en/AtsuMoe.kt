@@ -51,6 +51,13 @@ internal class AtsuMoe(context: MangaLoaderContext) :
         isTagsExclusionSupported = true,
     )
 
+    override suspend fun getFavicons(): Favicons {
+        return Favicons(
+            listOf(Favicon("https://$domain/favicon.ico", 32, null)),
+            domain,
+        )
+    }
+
     private val allGenres = listOf(
         Genre("Action", "39"), Genre("Adult", "46"), Genre("Adventure", "37"),
         Genre("Boys Love", "180"), Genre("Comedy", "6"), Genre("Drama", "31"),
